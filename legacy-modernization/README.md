@@ -30,7 +30,7 @@ Make the code easier for another developer to understand, maintain, and extend.
 
 Refer to the Canvas assignment for all required technical work, GitHub workflow, and submission directions.
 
-## Changes made include:
+## Changes made week 1 include:
 
 Modern Document Setup: Updated to HTML5 <!DOCTYPE html> with <meta name="viewport"> for responsive scaling, removing old HTML 4.01 transitional markup.
 
@@ -39,3 +39,14 @@ Semantic Layout: Replaced layout tables, spacer GIFs, broken table tags (<tr> wi
 Clean Modern CSS: Replaced table-based multi-column layout with Flexbox and CSS Grid. Added CSS variables for standard color definitions and responsive image handling.
 
 Accessibility & Standard Anchors: Replaced outdated <a name="..."> tags with id="..." attributes on target elements. Cleaned up alt text and removed fixed "800x600" text.
+
+## Changes made week 2 include:
+CSS Grid Layout: Applied to the main page wrapper (#container) and the plant section (.plant-grid), allowing items to wrap smoothly without breaking the layout.
+
+Flexbox Layout: Applied to the header, main navigation, hero section, two-column layout, about block, and visit banner so elements wrap neatly on mobile.
+
+Responsive Media: Images now use max-width: 100% and height: auto so they shrink smoothly within smaller screens.
+
+Breakpoint Design: Added clean, content-driven media queries at 768px and 480px to adjust layout grid structures only when necessary.
+
+Keyboard Accessibility: Added explicit :focus-visible styles for keyboard navigation to make interactive elements clearly identifiable.

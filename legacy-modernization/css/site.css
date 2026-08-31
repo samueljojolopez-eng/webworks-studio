@@ -22,12 +22,26 @@ body {
   color: var(--text-dark);
 }
 
+/* Responsive Main Container */
 #container {
   max-width: 720px;
+  width: 95%;
   margin: 0 auto;
   background-color: #ffffff;
   padding: 15px;
   box-sizing: border-box;
+}
+
+/* Responsive Images */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Accessible Focus States */
+a:focus-visible {
+  outline: 2px solid var(--link-hover);
+  outline-offset: 2px;
 }
 
 /* Typography & Links */
@@ -65,11 +79,13 @@ a:active {
   color: var(--link-hover);
 }
 
-/* Header */
+/* Flexbox Header */
 .site-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
   margin-bottom: 15px;
 }
 
@@ -78,23 +94,25 @@ a:active {
   text-align: right;
 }
 
-/* Navigation */
+/* Flexbox Navigation */
 .main-nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
+  flex-wrap: wrap;
   background-color: var(--primary-green);
 }
 
 .main-nav li {
-  flex: 1;
+  flex: 1 1 auto;
+  min-width: 90px;
   text-align: center;
 }
 
 .main-nav a {
   display: block;
-  padding: 10px 0;
+  padding: 10px 5px;
   color: #FFFFFF;
   font-size: 11px;
   font-weight: bold;
@@ -105,7 +123,7 @@ a:active {
   color: #FFF3B8;
 }
 
-/* Hero Section */
+/* Flexbox Hero Section */
 .hero-section {
   display: flex;
   gap: 20px;
@@ -114,7 +132,11 @@ a:active {
 }
 
 .hero-text {
-  flex: 1;
+  flex: 1 1 300px;
+}
+
+.hero-image {
+  flex: 0 0 auto;
 }
 
 .hero-title {
@@ -151,15 +173,15 @@ a:active {
   margin: 20px 0;
 }
 
-/* Plant Grid */
+/* CSS Grid: Plant Grid */
 .plant-grid {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 10px;
   margin-top: 15px;
 }
 
 .plant-card {
-  flex: 1;
   border: 1px solid var(--border-light);
   padding: 10px;
   box-sizing: border-box;
@@ -178,7 +200,7 @@ a:active {
   margin-top: 10px;
 }
 
-/* Sidebar & Multi-column Content */
+/* Flexbox: Multi-column Content */
 .two-column-layout {
   display: flex;
   gap: 20px;
@@ -215,17 +237,18 @@ a:active {
   flex: 1;
 }
 
-/* About Section */
+/* Flexbox: About Section */
 .about-content {
   display: flex;
   gap: 15px;
 }
 
-/* Visit Banner */
+/* Flexbox: Visit Banner */
 .visit-banner {
   background-color: var(--box-bg-light);
   padding: 12px;
   display: flex;
+  gap: 20px;
   margin-top: 20px;
 }
 
@@ -263,4 +286,28 @@ a:active {
 .copyright {
   font-size: 11px;
   color: #666666;
+}
+
+/* Breakpoint: Mobile & Tablet Enhancements */
+@media (max-width: 768px) {
+  .hero-section,
+  .two-column-layout,
+  .about-content,
+  .visit-banner {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+
+  .header-info {
+    text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-nav li {
+    flex: 1 1 50%;
+  }
 }
