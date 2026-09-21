@@ -1,0 +1,28 @@
+/*
+  Cedar & Stone Home Services — Week 5 Starter
+  Build with a System: Bootstrap
+
+  PROFESSIONAL WORKFLOW
+  Identify Requirement → Find Bootstrap Pattern → Implement → Adapt → Test
+
+  Bootstrap should do most of the layout and common interface work.
+  Before adding custom CSS, ask whether Bootstrap already provides an
+  appropriate utility or component pattern.
+
+  Use this file only for limited CLIENT-SPECIFIC styling that Bootstrap
+  does not reasonably provide.
+
+  Brand direction:
+  Deep green: #203c35
+  Cedar:      #a86643
+  Warm cream: #f5f0e7
+  Soft green: #e8efeb
+  Charcoal:   #26312d
+  Muted text: #5d6a64
+
+  Avoid rebuilding Bootstrap's grid, cards, buttons, spacing system,
+  responsive utilities, or other framework behavior here.
+
+  If you find yourself writing large overrides or repeated !important
+  declarations, reconsider your Bootstrap structure/classes first.
+*/
