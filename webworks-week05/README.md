@@ -119,3 +119,17 @@ Complete all three responses below. Keep each response concise and specific to *
 The goal is not to use as many Bootstrap classes as possible.
 
 **Identify → Find → Implement → Adapt → Test → Handoff → Deliver**
+
+
+## changes made, and added
+Header & Menu: Turned the basic links into a collapsible Bootstrap navigation bar with a mobile hamburger menu.
+
+Services: Turned the 3 service articles into neat, equal-height Bootstrap Cards with aligned buttons.
+
+Process Steps: Styled the 3-step list into a clean, numbered Bootstrap List Group.
+
+Layout & Grid: Wrapped every section in Bootstrap containers, rows, and columns (col-md-*) so the layout automatically adjusts for phones, tablets, and desktops.
+
+Utilities: Added Bootstrap classes for spacing (py-5, g-4), colors (bg-success, text-muted), and buttons (btn-success).
+
+Custom CSS: Added a tiny bit of CSS in css/custom.css for smooth scrolling and navbar spacing.
