@@ -6,14 +6,16 @@
   <title>Mission City Makers Market</title>
   <meta name="description" content="Mission City Makers Market event guide featuring local makers, event information, and visitor planning details.">
   <link rel="stylesheet" href="css/output.css">
+  <!-- Alpine.js CDN -->
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.17.1/dist/cdn.min.js"></script>
 </head>
 
-<body class="min-h-screen text-slate-800">
+<body class="min-h-screen text-slate-800 bg-stone-50">
   <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-4 focus:py-3 focus:text-slate-900 focus:shadow-lg">
     Skip to main content
   </a>
 
+  <!-- SITE HEADER -->
   <header class="border-b border-stone-300 bg-[#173946] text-white">
     <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 py-5">
       <a href="#" class="text-xl font-bold tracking-tight text-white">Mission City Makers Market</a>
@@ -26,85 +28,9 @@
       </nav>
     </div>
   </header>
-<div class="hs-accordion active" id="accordion-heading-one">
-
-<button
-    class="hs-accordion-toggle flex w-full items-center justify-between py-4 text-left font-semibold"
-    aria-expanded="true"
-    aria-controls="accordion-content-one">
-
-    What is Preline UI?
-
-    <span class="text-xl">+</span>
-
-</button>
-
-<div
-    id="accordion-content-one"
-    class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300"
-    role="region"
-    aria-labelledby="accordion-heading-one">
-
-    <p class="pb-4 text-gray-600">
-        Preline UI is a component library designed to work with Tailwind CSS.
-        It provides reusable interface components and JavaScript behaviors.
-    </p>
-
-</div>
-</div>
-<div class="hs-accordion" id="accordion-heading-two">
-
-<button
-    class="hs-accordion-toggle flex w-full items-center justify-between py-4 text-left font-semibold"
-    aria-expanded="false"
-    aria-controls="accordion-content-two">
-
-    Why use a component library?
-
-    <span class="text-xl">+</span>
-
-</button>
-
-<div
-    id="accordion-content-two"
-    class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300"
-    role="region"
-    aria-labelledby="accordion-heading-two">
-
-    <p class="pb-4 text-gray-600">
-        Component libraries provide tested patterns that can save development
-        time while still allowing us to customize the final design.
-    </p>
-
-</div>
-<div class="hs-accordion" id="accordion-heading-three">
-
-<button
-    class="hs-accordion-toggle flex w-full items-center justify-between py-4 text-left font-semibold"
-    aria-expanded="false"
-    aria-controls="accordion-content-three">
-
-    Can I customize a Preline component?
-
-    <span class="text-xl">+</span>
-
-</button>
-
-<div
-    id="accordion-content-three"
-    class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300"
-    role="region"
-    aria-labelledby="accordion-heading-three">
-
-    <p class="pb-4 text-gray-600">
-        Yes. Preline provides the component structure and behavior, while
-        Tailwind utilities let you adapt the appearance to fit your project.
-    </p>
-
-</div>
-<div class="hs-accordion-group max-w-2xl rounded-lg border border-gray-200 bg-white px-6 shadow-sm"></div>
 
   <main id="main-content">
+    <!-- HERO SECTION -->
     <section class="bg-[#173946] text-white">
       <div class="mx-auto grid max-w-6xl gap-8 px-5 py-14 lg:grid-cols-[1.15fr_.85fr] lg:items-center">
         <div>
@@ -129,51 +55,133 @@
       </div>
     </section>
 
-    <section id="makers" class="mx-auto max-w-6xl px-5 py-14" aria-labelledby="makers-heading">
+    <!-- SECTION 1: FEATURED MAKERS (REQUIREMENT 1: ALPINE EXPLORATION TOOL) -->
+    <section id="makers" class="mx-auto max-w-6xl px-5 py-14" aria-labelledby="makers-heading"
+             x-data="{ selectedCategory: 'all', searchQuery: '' }">
       <div class="max-w-3xl">
         <p class="text-sm font-bold uppercase tracking-[0.16em] text-[#246b63]">Featured Makers</p>
         <h2 id="makers-heading" class="mt-2 text-3xl font-bold text-[#142b3a]">Find something made locally.</h2>
-        <p class="mt-3 text-lg text-slate-600">The market includes returning artists and first-time vendors. Use this content as the basis for your Alpine-powered exploration tool.</p>
+        <p class="mt-3 text-lg text-slate-600">Filter local vendors by category or search by keyword to plan your market stops.</p>
       </div>
 
-      <!-- TODO: REQUIRED ALPINE INTERACTION
-           Add one purposeful Alpine-powered exploration tool here.
-           Requirements:
-           - x-data
-           - at least one user event
-           - at least one additional reactive directive
-           - visible, understandable interface response
-           - semantic, keyboard-accessible controls
-           Do NOT simply paste the classroom playground unchanged. -->
+      <!-- ALPINE CONTROLS -->
+      <div class="mt-8 rounded-2xl border border-stone-300 bg-white p-6 shadow-sm">
+        <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          <!-- Category Filter Buttons -->
+          <div class="flex flex-wrap items-center gap-2" role="group" aria-label="Filter makers by category">
+            <button type="button"
+                    @click="selectedCategory = 'all'"
+                    :class="selectedCategory === 'all' ? 'bg-[#173946] text-white' : 'bg-stone-100 text-slate-700 hover:bg-stone-200'"
+                    class="rounded-lg px-4 py-2 text-sm font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-[#246b63]">
+              All Makers
+            </button>
+            <button type="button"
+                    @click="selectedCategory = 'ceramics'"
+                    :class="selectedCategory === 'ceramics' ? 'bg-[#173946] text-white' : 'bg-stone-100 text-slate-700 hover:bg-stone-200'"
+                    class="rounded-lg px-4 py-2 text-sm font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-[#246b63]">
+              Ceramics
+            </button>
+            <button type="button"
+                    @click="selectedCategory = 'prints'"
+                    :class="selectedCategory === 'prints' ? 'bg-[#173946] text-white' : 'bg-stone-100 text-slate-700 hover:bg-stone-200'"
+                    class="rounded-lg px-4 py-2 text-sm font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-[#246b63]">
+              Printmaking
+            </button>
+            <button type="button"
+                    @click="selectedCategory = 'textiles'"
+                    :class="selectedCategory === 'textiles' ? 'bg-[#173946] text-white' : 'bg-stone-100 text-slate-700 hover:bg-stone-200'"
+                    class="rounded-lg px-4 py-2 text-sm font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-[#246b63]">
+              Textiles
+            </button>
+            <button type="button"
+                    @click="selectedCategory = 'woodcraft'"
+                    :class="selectedCategory === 'woodcraft' ? 'bg-[#173946] text-white' : 'bg-stone-100 text-slate-700 hover:bg-stone-200'"
+                    class="rounded-lg px-4 py-2 text-sm font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-[#246b63]">
+              Woodcraft
+            </button>
+          </div>
 
-      <div class="mt-8 rounded-xl border-2 border-dashed border-[#7da59c] bg-[#eef5f4] p-5">
-        <p class="font-bold text-[#174f49]">Student work area: Alpine interaction</p>
-        <p class="mt-1 text-sm leading-6 text-slate-700">Decide what would genuinely help a visitor explore these makers, then implement that behavior using Alpine.</p>
+          <!-- Search Input -->
+          <div class="relative w-full md:w-64">
+            <label for="maker-search" class="sr-only">Search makers</label>
+            <input id="maker-search"
+                   type="text"
+                   x-model="searchQuery"
+                   placeholder="Search makers..."
+                   class="w-full rounded-lg border border-stone-300 bg-stone-50 px-4 py-2 text-sm focus:border-[#246b63] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#246b63]/20">
+          </div>
+        </div>
+
+        <!-- Dynamic Status Message -->
+        <p class="mt-4 text-xs font-medium text-slate-500" aria-live="polite">
+          Showing <span class="font-bold text-[#246b63]" x-text="selectedCategory === 'all' ? 'All' : selectedCategory.charAt(0).toUpperCase() + selectedCategory.slice(1)"></span> vendors
+          <template x-if="searchQuery">
+            <span>matching "<span x-text="searchQuery"></span>"</span>
+          </template>
+        </p>
       </div>
 
+      <!-- MAKER CARDS GRID -->
       <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        <article data-category="ceramics" class="overflow-hidden rounded-2xl border border-stone-300 bg-white shadow-sm">
+        <!-- Ceramics Card -->
+        <article data-category="ceramics"
+                 x-show="(selectedCategory === 'all' || selectedCategory === 'ceramics') && ('cielo clay studio ceramics mugs bowls serving pieces'.includes(searchQuery.toLowerCase()))"
+                 x-transition
+                 class="overflow-hidden rounded-2xl border border-stone-300 bg-white shadow-sm">
           <img src="images/ceramics.svg" alt="Handmade ceramic mugs displayed at a market table" class="aspect-[3/2] w-full object-cover">
-          <div class="p-5"><p class="text-sm font-bold uppercase tracking-wide text-[#246b63]">Ceramics</p><h3 class="mt-2 text-xl font-bold text-[#142b3a]">Cielo Clay Studio</h3><p class="mt-2 text-sm leading-6 text-slate-600">Small-batch mugs, bowls, and serving pieces inspired by desert colors and South Texas skies.</p><p class="mt-4 text-sm"><strong>Booth:</strong> A12</p></div>
+          <div class="p-5">
+            <p class="text-sm font-bold uppercase tracking-wide text-[#246b63]">Ceramics</p>
+            <h3 class="mt-2 text-xl font-bold text-[#142b3a]">Cielo Clay Studio</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-600">Small-batch mugs, bowls, and serving pieces inspired by desert colors and South Texas skies.</p>
+            <p class="mt-4 text-sm"><strong>Booth:</strong> A12</p>
+          </div>
         </article>
 
-        <article data-category="prints" class="overflow-hidden rounded-2xl border border-stone-300 bg-white shadow-sm">
+        <!-- Printmaking Card -->
+        <article data-category="prints"
+                 x-show="(selectedCategory === 'all' || selectedCategory === 'prints') && ('rio press co. printmaking hand-pulled prints native plants architecture'.includes(searchQuery.toLowerCase()))"
+                 x-transition
+                 class="overflow-hidden rounded-2xl border border-stone-300 bg-white shadow-sm">
           <img src="images/printmaking.svg" alt="Colorful art prints hanging in a local maker booth" class="aspect-[3/2] w-full object-cover">
-          <div class="p-5"><p class="text-sm font-bold uppercase tracking-wide text-[#246b63]">Printmaking</p><h3 class="mt-2 text-xl font-bold text-[#142b3a]">Rio Press Co.</h3><p class="mt-2 text-sm leading-6 text-slate-600">Hand-pulled prints featuring native plants, neighborhood architecture, and regional landmarks.</p><p class="mt-4 text-sm"><strong>Booth:</strong> B04</p></div>
+          <div class="p-5">
+            <p class="text-sm font-bold uppercase tracking-wide text-[#246b63]">Printmaking</p>
+            <h3 class="mt-2 text-xl font-bold text-[#142b3a]">Rio Press Co.</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-600">Hand-pulled prints featuring native plants, neighborhood architecture, and regional landmarks.</p>
+            <p class="mt-4 text-sm"><strong>Booth:</strong> B04</p>
+          </div>
         </article>
 
-        <article data-category="textiles" class="overflow-hidden rounded-2xl border border-stone-300 bg-white shadow-sm">
+        <!-- Textiles Card -->
+        <article data-category="textiles"
+                 x-show="(selectedCategory === 'all' || selectedCategory === 'textiles') && ('luna loom works textiles handwoven scarves table runners'.includes(searchQuery.toLowerCase()))"
+                 x-transition
+                 class="overflow-hidden rounded-2xl border border-stone-300 bg-white shadow-sm">
           <img src="images/textiles.svg" alt="Handwoven textiles and fabric goods at a market stand" class="aspect-[3/2] w-full object-cover">
-          <div class="p-5"><p class="text-sm font-bold uppercase tracking-wide text-[#246b63]">Textiles</p><h3 class="mt-2 text-xl font-bold text-[#142b3a]">Luna Loom Works</h3><p class="mt-2 text-sm leading-6 text-slate-600">Handwoven scarves, table runners, and small home goods in natural fibers and muted colors.</p><p class="mt-4 text-sm"><strong>Booth:</strong> C07</p></div>
+          <div class="p-5">
+            <p class="text-sm font-bold uppercase tracking-wide text-[#246b63]">Textiles</p>
+            <h3 class="mt-2 text-xl font-bold text-[#142b3a]">Luna Loom Works</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-600">Handwoven scarves, table runners, and small home goods in natural fibers and muted colors.</p>
+            <p class="mt-4 text-sm"><strong>Booth:</strong> C07</p>
+          </div>
         </article>
 
-        <article data-category="woodcraft" class="overflow-hidden rounded-2xl border border-stone-300 bg-white shadow-sm">
+        <!-- Woodcraft Card -->
+        <article data-category="woodcraft"
+                 x-show="(selectedCategory === 'all' || selectedCategory === 'woodcraft') && ('mesquite & main woodcraft serving boards trays reclaimed wood'.includes(searchQuery.toLowerCase()))"
+                 x-transition
+                 class="overflow-hidden rounded-2xl border border-stone-300 bg-white shadow-sm">
           <img src="images/woodcraft.svg" alt="Handcrafted wooden serving boards on display" class="aspect-[3/2] w-full object-cover">
-          <div class="p-5"><p class="text-sm font-bold uppercase tracking-wide text-[#246b63]">Woodcraft</p><h3 class="mt-2 text-xl font-bold text-[#142b3a]">Mesquite &amp; Main</h3><p class="mt-2 text-sm leading-6 text-slate-600">Serving boards, trays, and small household pieces made from reclaimed and locally sourced wood.</p><p class="mt-4 text-sm"><strong>Booth:</strong> D03</p></div>
+          <div class="p-5">
+            <p class="text-sm font-bold uppercase tracking-wide text-[#246b63]">Woodcraft</p>
+            <h3 class="mt-2 text-xl font-bold text-[#142b3a]">Mesquite &amp; Main</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-600">Serving boards, trays, and small household pieces made from reclaimed and locally sourced wood.</p>
+            <p class="mt-4 text-sm"><strong>Booth:</strong> D03</p>
+          </div>
         </article>
       </div>
     </section>
 
+    <!-- SECTION 2: PLAN YOUR VISIT -->
     <section id="plan" class="border-y border-stone-300 bg-white" aria-labelledby="plan-heading">
       <div class="mx-auto grid max-w-6xl gap-8 px-5 py-14 lg:grid-cols-2">
         <div>
@@ -200,33 +208,96 @@
       </div>
     </section>
 
+    <!-- SECTION 3: VISITOR QUESTIONS (REQUIREMENT 2: ADAPTED PRELINE ACCORDION) -->
     <section id="questions" class="mx-auto max-w-6xl px-5 py-14" aria-labelledby="questions-heading">
       <div class="max-w-3xl">
         <p class="text-sm font-bold uppercase tracking-[0.16em] text-[#246b63]">Visitor Questions</p>
-        <h2 id="questions-heading" class="mt-2 text-3xl font-bold text-[#142b3a]">Help visitors find answers quickly.</h2>
-        <p class="mt-3 text-lg text-slate-600">This section contains useful content that could benefit from a reusable interface component.</p>
+        <h2 id="questions-heading" class="mt-2 text-3xl font-bold text-[#142b3a]">Frequently Asked Questions</h2>
+        <p class="mt-3 text-lg text-slate-600">Quick answers to help you prepare for your visit to Mission City Makers Market.</p>
       </div>
 
-      <!-- TODO: REQUIRED PRELINE COMPONENT
-           Choose ONE appropriate Preline component and adapt it here.
-           Possible directions: accordion, tabs, modal, dropdown, alert,
-           or another instructor-approved Preline component.
-           Use official Preline documentation. -->
+      <!-- PRELINE ACCORDION COMPONENT -->
+      <div class="hs-accordion-group mt-8 space-y-3">
+        <!-- Item 1 -->
+        <div class="hs-accordion border border-stone-300 bg-white rounded-xl overflow-hidden transition-all" id="faq-1">
+          <button type="button"
+                  class="hs-accordion-toggle text-[#142b3a] hover:text-[#246b63] flex w-full items-center justify-between p-5 text-left font-bold text-lg focus:outline-none focus:ring-2 focus:ring-[#246b63]"
+                  aria-expanded="false"
+                  aria-controls="faq-collapse-1">
+            Can I bring children?
+            <svg class="hs-accordion-active:rotate-180 size-5 text-slate-500 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div id="faq-collapse-1"
+               class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300"
+               role="region"
+               aria-labelledby="faq-1">
+            <div class="px-5 pb-5 text-sm leading-6 text-slate-600">
+              Yes. The market is family-friendly. Children should remain with an adult, especially during live demonstrations.
+            </div>
+          </div>
+        </div>
 
-      <div class="mt-8 rounded-xl border-2 border-dashed border-amber-500 bg-amber-50 p-5">
-        <p class="font-bold text-amber-900">Student work area: Preline component</p>
-        <p class="mt-1 text-sm leading-6 text-amber-950">Choose a component because it improves this client content—not simply because the component looks interesting.</p>
-      </div>
+        <!-- Item 2 -->
+        <div class="hs-accordion border border-stone-300 bg-white rounded-xl overflow-hidden transition-all" id="faq-2">
+          <button type="button"
+                  class="hs-accordion-toggle text-[#142b3a] hover:text-[#246b63] flex w-full items-center justify-between p-5 text-left font-bold text-lg focus:outline-none focus:ring-2 focus:ring-[#246b63]"
+                  aria-expanded="false"
+                  aria-controls="faq-collapse-2">
+            Are pets allowed?
+            <svg class="hs-accordion-active:rotate-180 size-5 text-slate-500 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div id="faq-collapse-2"
+               class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300"
+               role="region"
+               aria-labelledby="faq-2">
+            <div class="px-5 pb-5 text-sm leading-6 text-slate-600">
+              Only trained service animals are allowed inside Mission Plaza Arts Hall.
+            </div>
+          </div>
+        </div>
 
-      <div class="mt-7 grid gap-5 md:grid-cols-2">
-        <article class="rounded-xl border border-stone-300 bg-white p-5"><h3 class="text-lg font-bold text-[#142b3a]">Can I bring children?</h3><p class="mt-2 text-sm leading-6 text-slate-600">Yes. The market is family-friendly. Children should remain with an adult, especially during live demonstrations.</p></article>
-        <article class="rounded-xl border border-stone-300 bg-white p-5"><h3 class="text-lg font-bold text-[#142b3a]">Are pets allowed?</h3><p class="mt-2 text-sm leading-6 text-slate-600">Only trained service animals are allowed inside Mission Plaza Arts Hall.</p></article>
-        <article class="rounded-xl border border-stone-300 bg-white p-5"><h3 class="text-lg font-bold text-[#142b3a]">Can I buy items online later?</h3><p class="mt-2 text-sm leading-6 text-slate-600">Many vendors sell online, but availability varies. Ask the maker for a business card or website before you leave.</p></article>
-        <article class="rounded-xl border border-stone-300 bg-white p-5"><h3 class="text-lg font-bold text-[#142b3a]">Is the event indoors?</h3><p class="mt-2 text-sm leading-6 text-slate-600">Yes. The maker booths and demonstrations are indoors. Food vendors are located on the covered south patio.</p></article>
+        <!-- Item 3 -->
+        <div class="hs-accordion border border-stone-300 bg-white rounded-xl overflow-hidden transition-all" id="faq-3">
+          <button type="button"
+                  class="hs-accordion-toggle text-[#142b3a] hover:text-[#246b63] flex w-full items-center justify-between p-5 text-left font-bold text-lg focus:outline-none focus:ring-2 focus:ring-[#246b63]"
+                  aria-expanded="false"
+                  aria-controls="faq-collapse-3">
+            Can I buy items online later?
+            <svg class="hs-accordion-active:rotate-180 size-5 text-slate-500 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div id="faq-collapse-3"
+               class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300"
+               role="region"
+               aria-labelledby="faq-3">
+            <div class="px-5 pb-5 text-sm leading-6 text-slate-600">
+              Many vendors sell online, but availability varies. Ask the maker for a business card or website before you leave.
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="hs-accordion border border-stone-300 bg-white rounded-xl overflow-hidden transition-all" id="faq-4">
+          <button type="button"
+                  class="hs-accordion-toggle text-[#142b3a] hover:text-[#246b63] flex w-full items-center justify-between p-5 text-left font-bold text-lg focus:outline-none focus:ring-2 focus:ring-[#246b63]"
+                  aria-expanded="false"
+                  aria-controls="faq-collapse-4">
+            Is the event indoors?
+            <svg class="hs-accordion-active:rotate-180 size-5 text-slate-500 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div id="faq-collapse-4"
+               class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300"
+               role="region"
+               aria-labelledby="faq-4">
+            <div class="px-5 pb-5 text-sm leading-6 text-slate-600">
+              Yes. The maker booths and demonstrations are indoors. Food vendors are located on the covered south patio.
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
+  <!-- FOOTER -->
   <footer class="bg-[#102a35] text-slate-200">
     <div class="mx-auto max-w-6xl px-5 py-8">
       <p class="font-bold text-white">Mission City Makers Market</p>

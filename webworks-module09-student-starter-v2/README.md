@@ -226,3 +226,37 @@ TODO
 - [ ] `js/vendor/preline.js` is committed.
 - [ ] `node_modules` is not committed.
 - [ ] Work is pushed to GitHub.
+
+
+finished readme
+
+## 1. Project Summary
+For this project, I added two purposeful interaction layers to the Mission City Makers Market event page to help visitors plan their visit without overloading the page. First, I created a custom, interactive Maker Category Filter and keyword search tool using Alpine.js so users can quickly explore local vendors. Second, I integrated and visually adapted Preline UI's accordion component to streamline the Visitor Questions section, replacing an unorganized card grid with a clean, collapsable FAQ.
+
+## 2. Alpine Decision
+* **Need Solved:** Visitors need a fast way to narrow down vendors by craft category (Ceramics, Printmaking, Textiles, Woodcraft) or keyword without scrolling past irrelevant listings.
+* **Directives Used:** `x-data` (to manage reactive state for `selectedCategory` and `searchQuery`), `@click` (for button category selection), `x-model` (for real-time input binding), `x-show` and `x-transition` (for smooth card filtering), `x-text` (for dynamic results messaging), and `x-if` (for conditional search output).
+* **Why Alpine Was Appropriate:** Alpine.js provided lightweight, inline reactive state directly within the HTML markup. Building a simple filter tool did not require a heavy JavaScript framework or complex custom DOM manipulation.
+
+## 3. Preline Decision
+* **Component Selected:** Preline Accordion (`hs-accordion` / `hs-accordion-group`).
+* **Problem Solved:** The original layout presented visitor questions as static grid cards, which took up significant vertical space and made scanning difficult for mobile users.
+* **How It Was Adapted:** I adapted Preline's structure using custom Tailwind utility classes that match the client's brand palette (navy `#142b3a`, teal `#246b63`, and stone borders `#d8d1c5`). I preserved all ARIA attributes (`aria-expanded`, `aria-controls`, `role="region"`) and smooth transition animations.
+
+## 4. Accessibility Notes
+1. **Keyboard Operability & Focus Management:** All filter buttons and accordion toggles are native `<button>` elements with visible focus rings (`focus:ring-2 focus:ring-[#246b63]`), ensuring keyboard users can tab through and interact seamlessly.
+2. **Screen Reader Announcements:** The Alpine filter includes an `aria-live="polite"` region that dynamically announces the current filter state to assistive technologies whenever a user changes categories or types in the search box.
+
+## 5. Testing Notes
+* **Narrow Viewports (Mobile):** Verified that filter buttons wrap cleanly without overflowing and that touch targets remain comfortable to tap. Confirmed accordion panels expand fully without causing horizontal scrolling.
+* **Medium & Wide Viewports (Tablet & Desktop):** Verified that the search bar aligns neatly next to filter controls and that maker cards maintain a responsive multi-column grid layout as cards hide and show.
+* **Keyboard Navigation:** Tested navigation entirely using the `Tab` and `Shift + Tab` keys to focus controls, using `Space` / `Enter` to activate accordion items and category filters.
+
+## 6. Dependencies
+* **Alpine.js (v3.17.1):** Loaded via CDN script to handle lightweight client-side state management, reactive input binding, and dynamic visibility toggling.
+* **Preline UI (v4.2.0):** Installed via npm and included via `preline.js` script to supply robust, accessible, JS-powered UI component behavior.
+* **Tailwind CSS (v4.3.3):** Processed via the Tailwind CLI to provide modern utility classes for responsive layout grids, brand typography, custom spacing, and theme colors.
+
+## 7. Sources
+* [Alpine.js Official Documentation](https://alpinejs.dev/docs)
+* [Preline UI Accordion Documentation](https://preline.co/docs/accordion.html)
